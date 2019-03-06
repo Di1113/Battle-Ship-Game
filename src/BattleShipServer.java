@@ -9,7 +9,7 @@ import java.util.HashMap;
 import java.util.concurrent.Semaphore;
 
 public class BattleShipServer {
-    public static void main(String args[]){
+    public static void main(String[] args){
 
         HashMap<String, ArrayList<Socket>> channels = new HashMap<>();
 
@@ -25,7 +25,7 @@ public class BattleShipServer {
         try (
                 //Listen to port on Server for incoming connections
                 ServerSocket serverSocket =
-                        new ServerSocket(Integer.parseInt(args[0]));
+                        new ServerSocket(Integer.parseInt(args[0]))
         ) {
             //Loop for continuously listening for new incoming connections
             while(true) {

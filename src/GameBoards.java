@@ -55,7 +55,7 @@ class Ship{
 
 
 // the game board, where the battle happens
-class SeaMap{
+class SeaMap implements GameMap {
     int shipsunk = 0;
     int shipUnplaced = 3;
     // each user has 3 ships, each with size 2, 3, 4 to place on the board
@@ -76,6 +76,7 @@ class SeaMap{
     }
 
     // initialize the empty field map
+    @Override
     public void fillMap(){
         for (int i = 0; i < 10; i++){
             char point[] = new char[10];
@@ -89,6 +90,7 @@ class SeaMap{
 
 
     // print out the map
+    @Override
     public String printMap(String mapname){
 
         String mapstring = "";
@@ -115,6 +117,7 @@ class SeaMap{
 
     // check if ship with such size is un-placed fot placingShip() method
     // if so, place it and change the size in ships[] to 0 to show it's placed
+    @Override
     public boolean shipPlaced(int size){
         boolean placed = false;
 
@@ -129,6 +132,7 @@ class SeaMap{
 
 
     // placing ships by changing '+' to 'o'
+    @Override
     public int placingShip(int x1, int y1, int x2, int y2){
 
         // if the ship is placed vertically
@@ -265,6 +269,7 @@ class SeaMap{
 
 
     // Update the bombed sites for the masked view map; '&' for missed, '/' for hit
+    @Override
     public void markBombed(int hit, int x, int y){
         if(hit == -1){
             map.get(y)[x] = '&';
@@ -275,6 +280,7 @@ class SeaMap{
     }
 
     // Update the bombed sites for the main map; '&' for missed, '/' for hit
+    @Override
     public int shipHit(int x, int y){
         // missed by hitting empty site '+'
         if (map.get(y)[x] == '+'){
@@ -311,6 +317,7 @@ class SeaMap{
     }
 
     // check if the hit ship has sunk by comparing to their hit hole and body size
+    @Override
     public int shipSunk(int ship){
 
         if(shipTeam.get(ship).hole_hit == shipTeam.get(ship).size){
@@ -323,6 +330,7 @@ class SeaMap{
         return -100;
     }
 
+    @Override
     public boolean gameOver(){
         if(shipsunk == 3){
             System.out.println("All your ships have sunk. Game over.");
