@@ -53,7 +53,7 @@ public class BattleShipServer {
                 //Add socket to the channel
                 channelList.add(clientSocket);
                 if(channelList.size() == 2) {
-                    ChannelListner cl = new ChannelListner(channelList);
+                    ChannelListener cl = new ChannelListener(channelList);
                     cl.start();
                 } else if (channelList.size() == 1){
                     // out to player in the room (pir)
@@ -70,10 +70,10 @@ public class BattleShipServer {
     }
 }
 
-class ChannelListner extends Thread{
+class ChannelListener extends Thread{
     ArrayList<Socket> channels;
 
-    ChannelListner(ArrayList<Socket> channels){
+    ChannelListener(ArrayList<Socket> channels){
         this.channels = channels;
     }
 
